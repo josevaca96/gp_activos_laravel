@@ -1,0 +1,28 @@
+/* 
+.logo{
+    width: 350px;
+    border:1px;
+}
+img{
+    width: 90px;
+    height: 40px;
+}
+body{
+    padding: 60px;
+    padding: 10px;
+}
+ */
+
+.certer_content{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 600px;
+}
+.col-md-4 img{
+    width: 200px;
+}
+.card-title{
+    color: rgb(19, 51, 79) !important ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    
+}

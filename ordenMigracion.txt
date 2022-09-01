@@ -1,0 +1,21 @@
+orden de creacion de la tablas de la base de datos:
+
+1.-Categoria
+2.-UnidadDeMedida
+3.-Producto
+4.-Cliente
+5.-Natural
+6.-Juridico
+7.-Cargo
+8.-Empleado
+9.-CargoEmpleado
+10.-Venta
+11.-DetalleVentaProducto
+12.-TipoServicio
+13.-Reserva
+14.-TipoVehiculoEquipo
+16.-Servicio
+16.-DetalleVentaServicio
+17.-DetalleServicioVehiculo
+
+

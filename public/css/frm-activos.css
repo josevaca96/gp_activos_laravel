@@ -1,0 +1,37 @@
+.t-principal{
+  font-size: 2.5rem;
+  height: auto;
+}
+.cod_b{
+  width: 16.2rem;
+  height:9rem ;
+  padding:0 0 0 0 ;
+}
+.text-dark{
+  font-weight: bold;
+  font-size: 20px;
+}
+.icons_picture{
+  padding-right: 10px;
+  width:40px;
+  height:40px;
+  
+}
+.col-lg-6 p{
+  margin-bottom: 20px;
+}
+#logo_c{
+  color: gray;
+  width:40px;
+  height: 33px;
+  
+}
+.fly{
+  padding: 1px 1px  1px !important;
+}
+
+
+.content-titulo{
+  color:rgb(52, 71, 103);
+  font-weight: bolder;
+}

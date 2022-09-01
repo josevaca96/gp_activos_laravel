@@ -1,0 +1,152 @@
+html,
+    body {
+        background-color: white;
+       /* color: green;*/
+        /* background-image:url("{{ asset('img/bg_body.jpg') }}"); */
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        height: 100vh;
+        margin: 0;
+
+
+    }
+
+    .full-height {
+        height: 100vh;
+    }
+
+    .flex-center {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .position-ref {
+        position: relative;
+
+    }
+
+    .top-right {
+        position: absolute;
+        right: 10px;
+        top: 18px;
+        z-index: 2000;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 84px;
+    }
+
+    .links>a {
+        /* color: gray; */
+        color: blanchedalmond;
+        padding: 0 25px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .m-b-md {
+        margin-bottom: 30px;
+    }
+
+    .super_titulo {
+        /* font-size: 22px; */
+        font-weight: bold
+    }
+
+    .parrafo_1 {
+        font-size: 22px;
+        /* font-weight: bold */
+
+    }
+
+    #img_logo {
+        /* filter: invert(1); */
+        width: 325px;
+        height: 163px;
+        /* 350x188 */
+    }
+    .carousel-item{
+        width: 100%;
+        height: 250px;
+    }
+    p{
+        color:black;
+    }
+    #c_principal{
+        /* padding-top: 100px; */
+        /* background-image: url('https://images.wallpaperscraft.com/image/single/pagoda_building_trees_300774_1280x720.jpg'); */
+        background-image: url('http://www.icorp.com.mx/blog/wp-content/uploads/2018/04/itinfrastructure1-713x330.jpg');
+        background-size: cover;
+        padding: 0px 0px;
+    }
+    #fondo{
+        /* background: rgb(164, 234, 23); */
+        width: 100%;
+        height: 350px;
+        position: relative;
+    }
+    #img_logo{
+        display: flex;
+        position: absolute;
+        top:240px;
+        left:36%;
+
+
+    }
+
+    #pie{
+        color:white;
+        text-align: center;
+        /* padding-top: 265px; */
+        padding-top: 95px;
+
+
+    }
+    #Fondo2{
+        background:rgb(10, 38, 109);
+        /* background: black; */
+        /* opacity: 20; */
+        width: 100%;
+        height: auto;
+       /* background-color:blanchedalmond; */
+    }
+/*
+    #hr{
+        width: 80%;
+    } */
+
+    #p{
+        color: white;
+        padding-top: 8%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+.card-title{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.logo_guide{
+    width: 25px;
+    height:25qpx;
+
+}
+#heading{
+    padding-bottom: 10px;
+}
+#heading div{
+    float:left;
+}
+.itm > div{
+    padding-top: 8px;
+}
+
+
+
