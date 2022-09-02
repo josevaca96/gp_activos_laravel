@@ -1,26 +1,29 @@
 <div>
     <h3 class="content-titulo">Editar Asignación</h3>
     <div class="row shadow p-3 mb-5 bg-body rounded">
-        <div class="col-6">
+        <div class="col-12">
             <div class="row">
                 <div class="col-12">
                     <div class="row p-5">
                         <div class="col-5 pt-2">
-                            {{ Form::label('empresa', 'Empresa') }}
+                            {{-- {{ Form::label('empresa', 'Empresa') }} --}}
                             <input type="text" name="ide2" value="{{$v_ant_ide}}" class="form-control" style="display:none;">
-                            {!! Form::select('IdE',$empresas,$var_IdE, ['class' => 'form-control']) !!}                            
+                            {{-- {!! Form::select('IdE',$empresas,$var_IdE, ['class' => 'form-control', 'Disabled']) !!} --}}
+                            <input type="text" name="IdE" class="form-control" wire:model="var_IdE" style="display:none;" >
                         </div>
                         <div class="col-7 pt-2">
-                            {{ Form::label('departamento', 'Departamento') }}
+                            {{-- {{ Form::label('departamento', 'Departamento') }} --}}
                             <input type="text" name="idd2" value="{{$v_ant_idd}}" class="form-control" style="display:none;">
-                            {!! Form::select('IdD',$departamentos,$var_IdD, ['class' => 'form-control']) !!}
-                            
+                            {{-- {!! Form::select('IdD',$departamentos,$var_IdD, ['class' => 'form-control', 'Disabled']) !!} --}}
+                            <input type="text" name="IdD" class="form-control" wire:model="var_IdD" style="display:none;" >
+
                         </div>
                         <div class="col-12 pt-2">
-                            {{ Form::label('oficina', 'Oficina') }}
+                            {{-- {{ Form::label('oficina', 'Oficina') }} --}}
                             <input type="text" name="ido2" value="{{$v_ant_ido}}" class="form-control" style="display:none;">
-                            {!! Form::select('IdO',$oficinas,$var_IdO, ['class' => 'form-control']) !!}
-                            
+                            {{-- {!! Form::select('IdO',$oficinas,$var_IdO, ['class' => 'form-control', 'Disabled']) !!} --}}
+                            <input type="text" name="IdO" class="form-control" wire:model="var_IdO" style="display:none;" >
+
                         </div>
 
                         <div class="col-4 pt-2">
@@ -50,13 +53,13 @@
                             {{Form::date('fecha_f',$fecha_f,['class' => 'form-control'])}}
                             <!-- {{Form::date('fecha_f',$fecha_f,['class' => 'form-control','placeholder' =>'dd/mm/aaaa'])}} -->
                         </div>
-                        <div class="col-12 pt-2">
+                        <div class="col-12 pt-2 pb-3">
                             <label for="" class="mb-0">Ususario Asignado</label>
                             {{ Form::text('UsuarioAsig', $UsuarioAsig , ['class' => 'form-control']) }}
                         </div>
                         <div class="d-flex justify-content-end">
                             <div class="form-group pr-2">
-                                <a href="{{route('oficinas.index')}}" class="btn btn-outline-info btn_activo_save">
+                                <a href="{{route('asignaciones.index')}}" class="btn btn-outline-info btn_activo_save">
                                     Cancelar
                                 </a>
                             </div>
@@ -69,7 +72,7 @@
             </div>
         </div>
         <!-- segunda columna -->
-        <div class="col-5">
+        {{-- <div class="col-5">
             <div class="row">
                 <div class="col-12">
                     <label> Buscar</label>
@@ -117,6 +120,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>

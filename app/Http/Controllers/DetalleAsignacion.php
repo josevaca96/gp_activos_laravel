@@ -38,9 +38,9 @@ class DetalleAsignacion extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             ->orderBy('IdAct' ,'DESC')
             ->paginate(30);
 
@@ -62,13 +62,13 @@ class DetalleAsignacion extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public $G_IdE,$G_IdO,$G_IdD,$G_IdAct;
+    public $G_IdE_S,$G_IdO_S,$G_IdD_S,$G_IdAct_S;
     public function store(Request $request){
         // dd($request->IdE);
-        $this->G_IdE =$request->IdE;
-        $this->G_IdO =$request->IdO;
-        $this->G_IdD =$request->IdD;
-        $this->G_IdAct =$request->IdAct;
+        $this->G_IdE_S =$request->IdE;
+        $this->G_IdO_S =$request->IdO;
+        $this->G_IdD_S =$request->IdD;
+        $this->G_IdAct_S =$request->IdAct;
         //validando los campos del formulario
         Validator::make($request->all(), [
             'IdE'   => 'required',
@@ -78,10 +78,10 @@ class DetalleAsignacion extends Controller
             'fecha_i' => 'required',
             'CapRecursos' => 'required',
             'IdE'   => Rule::unique('detalle_asignacions')->where(function ($query){
-                return $query->where('IdE',$this->G_IdE)
-                             ->where('IdO',$this->G_IdO)
-                             ->where('IdD',$this->G_IdD)
-                             ->where('IdAct',$this->G_IdAct);
+                return $query->where('IdE',$this->G_IdE_S)
+                             ->where('IdO',$this->G_IdO_S)
+                             ->where('IdD',$this->G_IdD_S)
+                             ->where('IdAct',$this->G_IdAct_S);
             })
         ],
         [
@@ -104,8 +104,7 @@ class DetalleAsignacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($IdE,$IdO,$IdD,$IdAct)
-    {
+    public function show($IdE,$IdO,$IdD,$IdAct){
         $detalle= DB::table('detalle_asignacions')
                 ->join('empresas', 'empresas.id', '=', 'detalle_asignacions.IdE')
                 ->join('oficinas', 'oficinas.id', '=', 'detalle_asignacions.IdO')
@@ -141,17 +140,14 @@ class DetalleAsignacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($IdE,$IdO,$IdD,$IdAct)
-    {
+    public function edit($IdE,$IdO,$IdD,$IdAct){
         // dd($IdE,$IdO,$IdD,$IdAct);
         $detalle_asignacions =Asignacion::where('IdE','=',$IdE)
             ->where('IdO','=',$IdO)
             ->where('IdD','=',$IdD)
             ->where('IdAct','=',$IdAct)
             ->get();
-
             $transform=$detalle_asignacions[0];
-
         return view('DetalleAsignacion.edit', compact('detalle_asignacions','transform'));
     }
 
@@ -162,18 +158,30 @@ class DetalleAsignacion extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public $G_IdE_U,$G_IdO_U,$G_IdD_U,$G_IdAct_U;
     public function update(Request $request, Asignacion $obj_asig){
-    // dd($request);
         //validando los campos del formulario
+        $this->G_IdE_U =$request->IdE;
+        $this->G_IdO_U =$request->IdO;
+        $this->G_IdD_U =$request->IdD;
+        $this->G_IdAct_U =$request->IdAct;
+
         Validator::make($request->all(), [
             'IdE' => 'required',
             'IdO' => 'required',
             'IdD' => 'required',
             'IdAct' => 'required',
-            'fecha_i' => 'required'
+            'fecha_i' => 'required',
+            // 'IdE'   => Rule::unique('detalle_asignacions')->ignore($obj_consulta)->where(function ($query){
+            //     return $query->where('IdE',$this->G_IdE_U)
+            //                  ->where('IdO',$this->G_IdO_U)
+            //                  ->where('IdD',$this->G_IdD_U)
+            //                  ->where('IdAct',$this->G_IdAct_U);
+            // })
             ],
             [
             'IdE.required' => 'El Campo Empresa es requerido',
+            // 'IdE.unique' => 'Verifique los Datos',
             'IdO.required' => 'El Campo Oficina es requerido',
             'IdD.required' => 'El Campo Departamento es requerido',
             'IdAct.required' => 'El Campo Activo es requerido',

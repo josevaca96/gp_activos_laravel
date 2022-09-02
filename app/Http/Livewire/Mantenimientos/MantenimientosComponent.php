@@ -13,14 +13,13 @@ use App\Mantenimiento;
 class MantenimientosComponent extends Component
 {
     // variables
-
     public $search='';
     public $nombre_activo;
     // variables para obj objetos
     public  $obj_mantenimiento;
     public  $obj_activo;
     protected $rules = [
-        'obj_activo.NroSerial' => 'required',
+        'obj_activo.NroSerial' => 'nullable',
         'obj_activo.Codigo' => 'required',
 
         'obj_mantenimiento.IdActivo' => 'required|integer',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mantenimiento;
+use App\Activo;
 
 class MantenimientoController extends Controller
 {
@@ -19,7 +20,9 @@ class MantenimientoController extends Controller
         ->select('mantenimientos.*','activos.Codigo','tipo_activos.Nombre')
         ->join('activos', 'mantenimientos.IdActivo', '=', 'activos.id')
         ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
-        ->get();
+        ->orderBy('mantenimientos.FechaMantProxi' ,'asc')
+        ->where('mantenimientos.deleted_at', '=', null)
+        ->paginate(30);
         return view('Mantenimientos.index',compact('mantenimientos'));
     }
     /**
@@ -77,9 +80,12 @@ class MantenimientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Mantenimiento $mantenimiento){
+        //objeto mantenimientos
+        $obj_man = Mantenimiento::where('id' , $mantenimiento->id)
+            ->get();
+        $mantenimiento=$obj_man[0];
+        return view('Mantenimientos.edit', compact('mantenimiento'));
     }
 
     /**
@@ -102,6 +108,9 @@ class MantenimientoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mantenimiento =Mantenimiento::find($id);
+        // dd($mantenimiento);
+        $mantenimiento->delete();
+        return back()->with('info', 'eliminado correctamente');
     }
 }

@@ -28,8 +28,8 @@
                          <th>Oficina</th>
                          <th>Departamento</th>
                          <th>Fecha Inicial</th>
-                         <th>Fecha Final</th>
-                         <th>Captura de Recurso</th>
+                         {{-- <th>Fecha Final</th> --}}
+                         <th width="4%">Captura de Recurso</th>
                          <th colspan="3" width="8%">Acciones</th>
                      </tr>
                  </thead>
@@ -43,7 +43,7 @@
                              <td>{{ $detalle_asginacion->Direccion }}</td>
                              <td>{{ $detalle_asginacion->departamento }}</td>
                              <td>{{ $detalle_asginacion->fecha_i }}</td>
-                             <td>{{ $detalle_asginacion->fecha_f }}</td>
+                             {{-- <td>{{ $detalle_asginacion->fecha_f }}</td> --}}
                              <td>{{ $detalle_asginacion->CapRecursos }}</td>
                              @can('asignaciones.show')
                                  <td class="fly">
