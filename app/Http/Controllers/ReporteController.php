@@ -12,9 +12,9 @@ class ReporteController extends Controller
     public function index(){
         return view('reportes.index');
     }
-    public function reporte_principal(Request $request){ 
+    public function reporte_principal(Request $request){
         // mandar los datos devuelta a las cajas
-        
+
         $empresas = Empresa::all();
         $tipo_activos = TipoActivo::all();
         $cant_item=0;
@@ -31,7 +31,7 @@ class ReporteController extends Controller
                 'label' => $query->UsuarioAsig
             ];
         }
-        return $data; 
+        return $data;
     }
     public function mostrar_reporte(Request $request){
         $reportes= $this->collection_option($request);
@@ -53,7 +53,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -66,16 +66,16 @@ class ReporteController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+
             ->where('detalle_asignacions.UsuarioAsig', '=' ,$request->usuario_asig)
             // ->where('detalle_asignacions.IdE', '=' ,$request->empresa)
             ->where('tipo_activos.id', '=' ,$request->activo)
             ->get();
             return $reportes;
         }
-       
+
         if($request->usuario_asig ==null &&  $request->empresa !=null && $request->activo !=null){
             $reportes = DB::table('detalle_asignacions')
             ->join('empresas', 'empresas.id', '=', 'detalle_asignacions.IdE')
@@ -84,7 +84,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -114,7 +114,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -144,7 +144,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -174,7 +174,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -204,7 +204,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -234,7 +234,7 @@ class ReporteController extends Controller
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
             ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
             ->select('activos.Codigo',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -256,7 +256,7 @@ class ReporteController extends Controller
             ->get();
             return $reportes;
         }
-        
+
     }
 
 }

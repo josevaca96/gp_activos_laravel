@@ -5,6 +5,8 @@
          <p class="px-2 text-info mb-0">Próximos Mantenimientos</p>
          @can('mantenimientos.create')
              <a class="text-info px-2" href="{{ route('mantenimientos.create') }}">Crear |</a>
+             {{-- <a class="text-info px-2" href="/busqueda_mantenimiento">Busqueda rápida</a> --}}
+
          @endcan
          <div class="panel-body shadow p-3 mb-5 bg-white rounded">
              <div class="table-responsive-lg">

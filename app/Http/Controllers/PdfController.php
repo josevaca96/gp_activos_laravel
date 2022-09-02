@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
-   
+
     public function PDF(Request $request){
         // dd($request);
         $usuario=$request->usuario_asig;
@@ -39,7 +39,7 @@ class PdfController extends Controller
                     'activos.Modelo',
                     'activos.Marca',
                     'activos.NroSerial',
-                    
+
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -52,9 +52,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             // ->where('detalle_asignacions.IdE', '=' ,$request->empresa)
             ->where('tipo_activos.id', '=' ,$activo)
@@ -71,7 +71,7 @@ class PdfController extends Controller
             ->select('activos.Codigo',
             'activos.Modelo',
             'activos.Marca',
-            'activos.NroSerial',        
+            'activos.NroSerial',
 
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
@@ -85,9 +85,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             // ->where('detalle_asignacions.UsuarioAsig', '=' ,$request->usuario_asig)
             // ->where('detalle_asignacions.IdE', '=' ,$request->empresa)
             ->where('tipo_activos.id', '=' ,$activo)
@@ -117,9 +117,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             // ->where('detalle_asignacions.UsuarioAsig', '=' ,$request->usuario_asig)
             ->where('detalle_asignacions.IdE', '=' ,$empresa)
             ->where('tipo_activos.id', '=' ,$activo)
@@ -149,9 +149,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             ->where('detalle_asignacions.IdE', '=' ,$empresa)
             // ->where('tipo_activos.id', '=' ,$request->activo)
@@ -181,9 +181,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             // ->where('detalle_asignacions.IdE', '=' ,$request->empresa)
             // ->where('tipo_activos.id', '=' ,$request->activo)
@@ -200,7 +200,7 @@ class PdfController extends Controller
             ->select('activos.Codigo',
             'activos.Modelo',
             'activos.Marca',
-            'activos.NroSerial', 
+            'activos.NroSerial',
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -213,9 +213,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             ->where('detalle_asignacions.IdE', '=' ,$empresa)
             ->where('tipo_activos.id', '=' ,$activo)
@@ -232,7 +232,7 @@ class PdfController extends Controller
             ->select('activos.Codigo',
             'activos.Modelo',
             'activos.Marca',
-            'activos.NroSerial', 
+            'activos.NroSerial',
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -245,9 +245,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             // ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             ->where('detalle_asignacions.IdE', '=' ,$empresa)
             // ->where('tipo_activos.id', '=' ,$activo)
@@ -264,7 +264,7 @@ class PdfController extends Controller
             ->select('activos.Codigo',
             'activos.Modelo',
             'activos.Marca',
-            'activos.NroSerial', 
+            'activos.NroSerial',
                     'detalle_asignacions.IdE',
                     'detalle_asignacions.IdO',
                     'detalle_asignacions.IdD',
@@ -277,9 +277,9 @@ class PdfController extends Controller
                     'detalle_asignacions.fecha_i',
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
-                    'detalle_asignacions.deleted_at'
+                    // 'detalle_asignacions.deleted_at'
                     )
-            ->where('detalle_asignacions.deleted_at', '=', null)
+            // ->where('detalle_asignacions.deleted_at', '=', null)
             // ->where('detalle_asignacions.UsuarioAsig', '=' ,$usuario)
             // ->where('detalle_asignacions.IdE', '=' ,$empresa)
             // ->where('tipo_activos.id', '=' ,$activo)
@@ -287,5 +287,5 @@ class PdfController extends Controller
             return $reportes;
         }
     }
-   
+
 }
