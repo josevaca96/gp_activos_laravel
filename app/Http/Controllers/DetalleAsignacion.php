@@ -215,16 +215,14 @@ class DetalleAsignacion extends Controller
 
     public function destroy($IdE,$IdO,$IdD,$IdAct)
     {
-        $fecha = $this->obtener_fecha_actual();
+        // $fecha = $this->obtener_fecha_actual();
         $asignacion =DB::table('detalle_asignacions')
         ->where('IdE' ,'=' ,$IdE)
         ->where('IdO' ,'=' ,$IdO)
         ->where('IdD' ,'=' ,$IdD)
         ->where('IdAct' ,'=' ,$IdAct)
-        ->update(['deleted_at' => $fecha]);
+        ->delete();
         return back()->with('info', 'eliminado correctamente');
-
-
     }
     public function obtener_fecha_actual(){
         $fecha_actual = new Carbon();
