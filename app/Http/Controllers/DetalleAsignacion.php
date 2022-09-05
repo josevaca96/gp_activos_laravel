@@ -215,7 +215,9 @@ class DetalleAsignacion extends Controller
 
     public function destroy($IdE,$IdO,$IdD,$IdAct)
     {
+        //deleted
         // $fecha = $this->obtener_fecha_actual();
+
         $asignacion =DB::table('detalle_asignacions')
         ->where('IdE' ,'=' ,$IdE)
         ->where('IdO' ,'=' ,$IdO)
