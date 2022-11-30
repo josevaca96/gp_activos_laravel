@@ -23,14 +23,14 @@
       }
       .cuerpo td,th{
         font-size: 10px;
-        
+
       }
      .encabezado th{
       background-color:rgb(190, 189, 189);
-     } 
-      
-      
-      
+     }
+
+
+
 /* table{border-collapse:collapse;}
 th,tr,td{
  border:1px solid #000;
@@ -49,7 +49,7 @@ tr:nth-child(odd) td{
 }
 .cuerpo td,th{
         font-size: 12px;
-        
+
       } */
     </style>
 </head>
@@ -69,15 +69,16 @@ tr:nth-child(odd) td{
     <table>
     <thead class="encabezado">
                  <tr>
-                     <th style="width:80px; height:auto;">Codigo</th>
+                     <th style="width:75px; height:auto;">Codigo</th>
                      <th style="width:120px; height:auto;">Activo</th>
                      <th style="width:120px; height:auto;">Modelo</th>
-                     <th style="width:120px; height:auto;">Marca</th>
-                     <th style="width:200px; height:auto;">Nro. Serial</th>
+                     <th style="width:80px; height:auto;">Marca</th>
+                     <th style="width:150px; height:auto;">Nro. Serial</th>
+                     <th style="width:90px; height:auto;">Condición</th>
                      <th style="width:160px; height:auto;">Usuario Asignado</th>
                      <th style="width:100px; height:auto;">Empresa</th>
                      <th style="width:80px; height:auto;">Fecha Asignación</th>
-                     
+
                  </tr>
              </thead>
 
@@ -94,10 +95,11 @@ tr:nth-child(odd) td{
                         <td><center>{{$obj->Modelo}}</center></td>
                         <td><center>{{$obj->Marca}}</center></td>
                         <td><center>{{$obj->NroSerial}}</center></td>
+                        <td><center>{{$obj->Condicion}}</center></td>
                         <td><center>{{$obj->UsuarioAsig}}</center></td>
                         <td><center>{{$obj->empresa}}</center></td>
                         <td><center>{{$obj->fecha_i}}</center></td>
-                        
+
                     </tr>
                     @empty
                     @endforelse
