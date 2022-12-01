@@ -75,8 +75,9 @@ tr:nth-child(odd) td{
                      <th style="width:80px; height:auto;">Marca</th>
                      <th style="width:150px; height:auto;">Nro. Serial</th>
                      <th style="width:90px; height:auto;">Condición</th>
-                     <th style="width:160px; height:auto;">Usuario Asignado</th>
-                     <th style="width:100px; height:auto;">Empresa</th>
+                     <th style="width:120px; height:auto;">Usuario Asignado</th>
+                     <th style="width:60px; height:auto;">Empresa</th>
+                     <th style="width:80px; height:auto;">Oficina</th>
                      <th style="width:80px; height:auto;">Fecha Asignación</th>
 
                  </tr>
@@ -98,7 +99,9 @@ tr:nth-child(odd) td{
                         <td><center>{{$obj->Condicion}}</center></td>
                         <td><center>{{$obj->UsuarioAsig}}</center></td>
                         <td><center>{{$obj->empresa}}</center></td>
+                        <td><center>{{$obj->Direccion}}</center></td>
                         <td><center>{{$obj->fecha_i}}</center></td>
+
 
                     </tr>
                     @empty

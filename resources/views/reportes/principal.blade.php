@@ -58,6 +58,14 @@
                                     @endforeach
                                 </select>
 
+                                <label for="tags">Oficina: </label>
+                                <select name="oficina" id="" class="form-control">
+                                    <option value="">todas las Oficinas</option>
+                                    @foreach($oficinas as $oficina)
+                                    <option value="{{$oficina->id}}">{{$oficina->Direccion}}</option>
+                                    @endforeach
+                                </select>
+
 
                                 <label for="tags">Activo: </label>
                                 <select name="activo" id="" class="form-control">

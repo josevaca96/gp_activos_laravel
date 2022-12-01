@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Asignacion;
 use App\Empresa;
 use App\TipoActivo;
+use App\Oficina;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class ReporteController extends Controller
 
         $empresas = Empresa::all();
         $tipo_activos = TipoActivo::all();
+        $oficinas = Oficina::all();
         $cant_item=0;
-        return view('reportes.principal', compact('empresas','tipo_activos','cant_item'));
+        return view('reportes.principal', compact('empresas','tipo_activos','oficinas','cant_item'));
     }
      public function traer_usuario_asig(Request $request){
         $term = $request->get('term');
