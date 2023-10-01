@@ -12,14 +12,9 @@ use Illuminate\Validation\Rule;
 
 class DetalleAsignacion extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(){
-        $detalle_asginacions= DB::table('detalle_asignacions')
-            ->join('empresas', 'empresas.id', '=', 'detalle_asignacions.IdE')
+        $query= Asignacion::join('empresas', 'empresas.id', '=', 'detalle_asignacions.IdE')
             ->join('oficinas', 'oficinas.id', '=', 'detalle_asignacions.IdO')
             ->join('departamentos', 'departamentos.id', '=', 'detalle_asignacions.IdD')
             ->join('activos', 'detalle_asignacions.IdAct', '=', 'activos.id')
@@ -39,29 +34,22 @@ class DetalleAsignacion extends Controller
                     'detalle_asignacions.fecha_f',
                     'detalle_asignacions.CapRecursos',
                     // 'detalle_asignacions.deleted_at'
-                    )
+            );
             // ->where('detalle_asignacions.deleted_at', '=', null)
-            ->orderBy('IdAct' ,'DESC')
-            ->paginate(30);
+            // ->orderBy('IdAct' ,'DESC')
+            // ->paginate(30);
+            // ->get();
+            // dd($detalle_asginacions->get());
+            $detalle_asginacions = $query->get();
+            $detalle_asginacions_paginate =   $query->orderBy('IdAct' ,'DESC')->paginate(30);
 
-        return view('DetalleAsignacion.index' , compact('detalle_asginacions'));
+        return view('DetalleAsignacion.index' , compact('detalle_asginacions', 'detalle_asginacions_paginate'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(){
         return view('DetalleAsignacion.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public $G_IdE_S,$G_IdO_S,$G_IdD_S,$G_IdAct_S;
     public function store(Request $request){
         // dd($request->IdE);
@@ -98,12 +86,6 @@ class DetalleAsignacion extends Controller
         ->with('info',' Creado con éxito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($IdE,$IdO,$IdD,$IdAct){
         $detalle= DB::table('detalle_asignacions')
                 ->join('empresas', 'empresas.id', '=', 'detalle_asignacions.IdE')
@@ -134,12 +116,6 @@ class DetalleAsignacion extends Controller
         return view('DetalleAsignacion.show', compact('detalle'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($IdE,$IdO,$IdD,$IdAct){
         // dd($IdE,$IdO,$IdD,$IdAct);
         $detalle_asignacions =Asignacion::where('IdE','=',$IdE)
@@ -148,16 +124,29 @@ class DetalleAsignacion extends Controller
             ->where('IdAct','=',$IdAct)
             ->get();
             $transform=$detalle_asignacions[0];
+            return view('DetalleAsignacion.edit', compact('detalle_asignacions','transform'));
+    }
+    public function asignaciones_edit(Request $request){
+        $detalle_asignacions =Asignacion::where('IdE','=',$request->IdE)
+            ->where('IdO','=',$request->IdO)
+            ->where('IdD','=',$request->IdD)
+            ->where('IdAct','=',$request->IdAct)
+            ->get();
+            $transform=$detalle_asignacions[0];
         return view('DetalleAsignacion.edit', compact('detalle_asignacions','transform'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function before_edit(Request $request){
+        return response()->json([
+            'url' => route('asignaciones.edit', [
+                'IdE' => $request->IdE,
+                'IdO' => $request->IdO,
+                'IdD' => $request->IdD,
+                'IdAct' => $request->IdAct,
+             ])
+        ]);
+    }
+
     public $G_IdE_U,$G_IdO_U,$G_IdD_U,$G_IdAct_U;
     public function update(Request $request, Asignacion $obj_asig){
         //validando los campos del formulario
@@ -206,15 +195,7 @@ class DetalleAsignacion extends Controller
         ->with('info','Actualizado con éxito');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function destroy($IdE,$IdO,$IdD,$IdAct)
-    {
+    public function destroy($IdE,$IdO,$IdD,$IdAct){
         //deleted
         // $fecha = $this->obtener_fecha_actual();
 
@@ -226,6 +207,7 @@ class DetalleAsignacion extends Controller
         ->delete();
         return back()->with('info', 'eliminado correctamente');
     }
+
     public function obtener_fecha_actual(){
         $fecha_actual = new Carbon();
         date_default_timezone_set('America/La_Paz');
@@ -233,4 +215,19 @@ class DetalleAsignacion extends Controller
         $fechaLocal = date("Y-m-d H:i:s", $time);
         return $fechaLocal;
     }
+
+    public function search_client(Request $request){
+        $term = $request->get('term');
+        $querys = DB::table('empleados')
+            ->select(DB::raw('CONCAT(Nombre, " ", Apellido) as NombreCompleto'))
+            ->where(DB::raw('CONCAT(Nombre, " ", Apellido)'),'LIKE', '%'.$term . '%')->distinct()->get();
+            $data = [];
+        foreach($querys as $query){
+            $data[] = [
+                'label' => $query->NombreCompleto
+            ];
+        }
+        return $data;
+    }
+
 }
