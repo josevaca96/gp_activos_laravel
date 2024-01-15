@@ -55,7 +55,7 @@
                             {{Form::date('fecha_f', NULL,['class' => 'form-control','placeholder' => 'dd/mm/aaaa'])}}
                         </div>
                         <div class="col-4 pt-2">
-                            <label for="" class="mb-0">Ususario Asignado</label>
+                            <label for="" class="mb-0">Usuario Asignado</label>
                             {{ Form::text('UsuarioAsig', null , ['class' => 'form-control']) }}
                         </div>
                         <div class="col-2 pt-2">
