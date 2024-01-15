@@ -108,7 +108,8 @@
             'adecuado' => 'ADECUADO',
             'req_man' => 'REQUIERE MANTENIMIENTO',
             'dañado' => 'DAÑADO',
-            'baja' => 'BAJA'
+            'baja' => 'BAJA',
+            'no_encontrado' => 'NO ENCONTRADO',
             ],null,['class' => 'form-control']) !!}
         </div>
     </div>
@@ -117,7 +118,7 @@
             {{ Form::label('name', 'Observaciones') }}
             {{ Form::textarea('Observaciones', null, [
                         'class'      => 'form-control',
-                        'rows'       => 6, 
+                        'rows'       => 6,
                         'name'       => 'Observaciones',
                         'id'         => 'Observaciones',
                         'onkeypress' => "return nameFunction(event);"
