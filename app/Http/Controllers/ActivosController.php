@@ -24,20 +24,20 @@ class ActivosController extends Controller
         ->join('tipo_activos', 'tipo_activos.id', '=', 'activos.IdTAct')
         ->select('activos.*', 'tipo_activos.Nombre')
         ->where('activos.deleted_at', '=', null)
-        ->orderBy('id' ,'ASC')
-        ->paginate(30);    
-        // $activos = Activo::orderBy('id' ,'DESC')->paginate(50);        
+        ->orderBy('id' ,'DESC')
+        ->paginate(30);
+        // $activos = Activo::orderBy('id' ,'DESC')->paginate(50);
         return view('activos.index' , compact('activos'));
     }
-    public function report_act(){      
+    public function report_act(){
         $activos = Activo::orderBy('id' ,'DESC')->get();
         return view('activos.reporte' , compact('activos'));
     }
-    public function report_filter(){      
+    public function report_filter(){
         $activos = Activo::orderBy('id' ,'DESC')->paginate(50);
         return view('activos.reporteall' , compact('activos'));
     }
-    public function busqueda(){   
+    public function busqueda(){
         $activos =DB::table('activos')
         ->join('tipo_activos', 'activos.IdTAct', '=', 'tipo_activos.id')
         ->select('activos.*',
@@ -62,7 +62,7 @@ class ActivosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function validar_activo($activo){ 
+    public function validar_activo($activo){
         if(
             Validator::make($activo->toArray(), [
                 'Codigo' => 'required|unique:activos',
@@ -80,8 +80,8 @@ class ActivosController extends Controller
         else{
             return false;
         }
-    }      
-    public function store(Request $request){        
+    }
+    public function store(Request $request){
         if($request->IdE=='' && $request->IdO=='' && $request->IdD=='' && $request->UsuarioAsig==''){
             if($this->validar_activo($request))
             {
@@ -122,9 +122,9 @@ class ActivosController extends Controller
                 $llenado_detalle->save();
                 return redirect()->route('activos.index')
                 ->with('info',' Activo Guardado con éxito');
-            } 
+            }
         }
-              
+
     }
 
     /**
@@ -134,7 +134,7 @@ class ActivosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Activo $activo){
-        
+
         return view('activos.show', compact('activo'));
     }
 
@@ -168,7 +168,7 @@ class ActivosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        
+
         $activo =Activo::find($id);
         $activo->delete();
         return back()->with('info', 'eliminado correctamente');

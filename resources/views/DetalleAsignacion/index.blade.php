@@ -6,6 +6,9 @@
                  <div class="d-flex justify-content-start pb-2">
                      <h2 class="text-info mb-0"><strong>Asignación de Activos</strong></h2>
                  </div>
+                 <a href="{{route('busqueda_rapida')}}" class="btn btn-sm btn-primary">
+                    Busqueda Rápida de Activos
+                </a>
              </div>
              <div class="col-6">
                  <div class="d-flex justify-content-end pb-2">

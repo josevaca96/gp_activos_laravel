@@ -41,7 +41,7 @@ class DetalleAsignacion extends Controller
                     // 'detalle_asignacions.deleted_at'
                     )
             // ->where('detalle_asignacions.deleted_at', '=', null)
-            ->orderBy('IdAct' ,'DESC')
+            ->orderBy('Codigo' ,'DESC')
             ->paginate(30);
 
         return view('DetalleAsignacion.index' , compact('detalle_asginacions'));
