@@ -11,9 +11,9 @@ $(document).ready(function() {
 });
 // devanecer alertas
 
- window.onload = function(){
-    Livewire.on('dataSend',() =>{
-        $('#exampleModal').modal('show','static');
-    });
- }
+//  window.onload = function(){
+//     Livewire.on('dataSend',() =>{
+//         $('#exampleModal').modal('show','static');
+//     });
+//  }
 

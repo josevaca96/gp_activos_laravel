@@ -25,8 +25,10 @@ class ActivosController extends Controller
         ->select('activos.*', 'tipo_activos.Nombre')
         ->where('activos.deleted_at', '=', null)
         ->orderBy('id' ,'DESC')
-        ->paginate(30);
+        // ->paginate(30);
+        ->get();
         // $activos = Activo::orderBy('id' ,'DESC')->paginate(50);
+        // dd($activos);
         return view('activos.index' , compact('activos'));
     }
     public function report_act(){
